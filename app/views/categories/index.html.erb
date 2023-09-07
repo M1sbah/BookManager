@@ -1,0 +1,18 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-3 mx-5">
+			<div class="card">
+				<div class="card-title text-center mt-2">
+					<h3>Add Category</h3>
+				</div>
+				<div class="card-body">
+					<%= render "form", category: @category %>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<%= render 'categories-list', categories: @categories %>
+		</div>
+	</div>
+
+</div>

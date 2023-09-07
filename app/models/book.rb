@@ -8,6 +8,9 @@ class Book < ApplicationRecord
 	has_one :publisher
 	has_many :authors
 
+	has_many :category_books
+	has_many :categories, through: :category_books
+
 	def delete
 		if self.publisher.present?
 			self.publisher.destroy

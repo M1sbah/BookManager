@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col-8">
+    <h1>Categories</h1>
+    <table class="table"> 
+      <thead class="table table-info">
+        <tr>
+          <th>Name</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+          <tr>
+            <td><%= category.name %></td>
+            <td><%= link_to :edit, categories_path(:id => category),class:"btn btn-outline-info" %></td>
+            <td><%= link_to "Delete", category, method: :delete, class:"btn btn-outline-danger", data: {confirm: "Are You Sure?"} %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
