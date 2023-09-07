@@ -1,0 +1,27 @@
+<div class="card w-100 mb-3 mt-5">
+  <div class="catd-title  text-center">
+    <h1>Authors List</h1>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% book.authors.each do |author| %>
+          <tr>
+            <td><%= author.name %></td>
+            <td><%= author.email %></td>
+            <td><%= link_to "Edit Author" , edit_book_author_path(book, author), class:"btn btn-outline-info" %> | 
+              <%= link_to "Delete", book_author_path(book, author), method: :delete, data: {confirm: "Are You Sure?"}, class:"btn btn-outline-danger "  %></td>
+          </tr>  
+        <% end %>
+      </tbody>
+    </table>
+    
+  </div>
+</div>

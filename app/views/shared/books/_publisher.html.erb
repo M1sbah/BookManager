@@ -1,0 +1,15 @@
+<div class="mx-auto mx-5 px-5 mt-5 px-5">
+	<div class="card w-100 mb-3">
+	  <div class="catd-title  text-center">
+	    <h1>Publisher Info</h1>
+	  </div>
+	  <div class="card-body">
+	    <strong>Publisher :- <%= book.publisher.publish %></strong>
+	    <p> Address :- <%= book.publisher.address %></p>
+	  </div>
+	</div>
+	<div class="col-6 mx-auto mx-5 px-5">
+	  <%= link_to "Edit Publisher" , edit_book_publisher_path(book.id, book.publisher.id), class:"btn btn-outline-info" %>  |
+	  <%= link_to "Delete", book_publisher_path(book.id, book.publisher.id), method: :delete, data: {confirm: "Are You Sure?"}, class:"btn btn-outline-danger "  %>
+	</div>
+</div>

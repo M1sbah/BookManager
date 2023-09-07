@@ -1,0 +1,17 @@
+<h1><%= heading %></h1>
+
+<%= form_with model: @publisher, url: url do |form| %>
+
+	<div class="mt-3">
+		<%= form.label :publish ,class:"form-control border-0"%>
+		<%= form.text_field :publish ,class:"form-control"%>
+	</div>
+	<div class="mt-3">
+		<%= form.label :address ,class:"form-control border-0"%>
+		<%= form.text_field :address ,class:"form-control"%>
+	</div>
+	<%= form.submit class:"btn btn-outline-primary mt-3" %>
+	<%= link_to :back, :back , class:"btn btn-outline-info mt-3" %>
+
+
+<% end %>
