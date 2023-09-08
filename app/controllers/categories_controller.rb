@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
 		if @category.save
 			flash[:notice] = "Category added"
 		else
-			flash[:notice] = "Unable to add Category"
+			flash[:alert] = "Unable to add Category"
 			
 		end
 		redirect_to categories_path
@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
 		if @category.update(category_params)
 			flash[:notice] = "Category Updated"
 		else
-			flash[:notice] = "Unable to Update"
+			flash[:alert] = "Unable to Update"
 			
 		end
 		redirect_to categories_path
@@ -42,7 +42,7 @@ class CategoriesController < ApplicationController
 		if @category.destroy
 			flash[:notice] = "Category Removed"
 		else
-			flash[:notice] = "Unable to Removed"
+			flash[:alert] = "Unable to Removed"
 		end
 		redirect_to categories_path
 	end

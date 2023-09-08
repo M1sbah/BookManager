@@ -17,7 +17,7 @@ class PublishersController < ApplicationController
 			flash[:notice] = "Publisher Created"
 			redirect_to @book
 		else
-			flash[:notice] = "Publisher not created"
+			flash[:alert] = "Publisher not created"
 			render :new
 		end
 
@@ -32,7 +32,7 @@ class PublishersController < ApplicationController
 			flash[:notice] = "Publisher Updated"
 			redirect_to @book
 		else
-			flash[:notice] = "Publisher not Updated"
+			flash[:alert] = "Publisher not Updated"
 			redirect_to edit_book_publisher_path(@book)
 		end
 
@@ -43,7 +43,7 @@ class PublishersController < ApplicationController
 			flash[:notice] = "Publisher Deleted"
 			redirect_to @book
 		else
-			flash[:notice] = "Publisher not Deleted"
+			flash[:alert] = "Publisher not Deleted"
 			redirect_to edit_book_publisher_path(@book)
 		end
 	end

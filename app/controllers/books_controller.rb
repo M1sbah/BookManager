@@ -26,6 +26,7 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully created."
       redirect_to @book
     else
+      flash[:alert] = "Unable to create book"
       render :new, status: :unprocessable_entity
     end
     # respond_to do |format|
@@ -46,6 +47,7 @@ class BooksController < ApplicationController
         format.html { redirect_to book_url(@book), notice: "Book was successfully updated." }
         format.json { render :show, status: :ok, location: @book }
       else
+        flash[:alert] = "Unable to update book"
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end

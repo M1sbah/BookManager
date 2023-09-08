@@ -15,7 +15,7 @@ class AuthorsController < ApplicationController
 			flash[:notice] = "#{@book.title} Author is created"
 			redirect_to @book
 		else
-			flash[:notice] = "Unable to create Author"
+			flash[:alert] = "Unable to create Author"
 			render :new
 		end
 	end
@@ -28,7 +28,7 @@ class AuthorsController < ApplicationController
 			flash[:notice] = "#{@book.title} Author is updated"
 			redirect_to @book
 		else
-			flash[:notice] = "Unable to update Author"
+			flash[:alert] = "Unable to update Author"
 			render :edit
 		end
 	end
