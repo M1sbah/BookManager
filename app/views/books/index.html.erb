@@ -2,23 +2,12 @@
   <p style="color: green"><%= notice %></p>
 
   <h1>Books</h1>
-  <table class="table"> 
-    <thead class="table table-danger">
-      <tr>
-        <th>Title</th>
-        <th>Price</th>
-        <th colspan="2">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @books.each do |book| %>
-        <tr>
-          <td><%= book.title %></td>
-          <td><%= book.price %></td>
-          <td><%= link_to "Show", book %></td>
-          <td><%= link_to "Edit", edit_book_path(book)  %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+
+  <div class="row row-cols-3 mt-4">
+    <% @books.each do |book| %>
+      <div class="mt-5 mb-5">
+        <%= render 'shared/books/show_book', book: book %>    
+      </div>
+    <% end %>
+  </div>
 </div>

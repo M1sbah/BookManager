@@ -6,6 +6,9 @@
     <strong>Description :- <%= book.desc %></strong>
     <p> Price :- <%= book.price %><br>
      Page :- <%= book.page %> </p>
+
+    <%= render "shared/books/categories", book: @book %>
+     
   </div>
 </div>
 

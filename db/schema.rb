@@ -11,14 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_09_07_111407) do
-  create_table "abcs", force: :cascade do |t|
-    t.string "a"
-    t.string "b"
-    t.string "c"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.string "email"

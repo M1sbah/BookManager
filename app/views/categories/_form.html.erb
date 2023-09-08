@@ -1,6 +1,6 @@
 <div class="container">
 	<%= form_with(model: @category) do |form| %>
-		<%= form.text_field :name, class:"form-control"%>
+		<%= form.text_field :name, class:"form-control", style:"background: #B8DF85;"%>
 		<%= form.submit class:"btn btn-info mt-3" %>
 		<% if params[:id].present? %>
 			<%= link_to :reset, categories_path, class:"btn btn-outline-danger mt-3 mx-2"  %>

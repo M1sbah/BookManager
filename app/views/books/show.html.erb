@@ -1,7 +1,6 @@
 <div class="container">
   <div class="mx-auto mx-5 px-5 mt-5 px-5">
     <%= render "shared/books/book" , book: @book %>
-
     <% if @book.publisher.present? %>
       <%= render "shared/books/publisher" , book: @book %>
     <%  end   %>

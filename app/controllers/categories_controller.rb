@@ -9,6 +9,12 @@ class CategoriesController < ApplicationController
 		end
 	end
 
+
+	def show
+		@category = Category.find(params[:id])
+		@books=@category.books
+	end
+
 	def create
 		@category = Category.new(category_params)
 		if @category.save

@@ -1,19 +1,19 @@
-<div class="container">
-  <div class="col-8">
+<div class="container mb-5">
+  <div class="col-8 mb-5" >
     <h1>Categories</h1>
-    <table class="table"> 
-      <thead class="table table-info">
+    <table class="table" > 
+      <thead class="table table-primary" style="border:1px solid;">
         <tr>
-          <th>Name</th>
-          <th colspan="2">Action</th>
+          <th style="background: #B8DF85;">Name</th>
+          <th colspan="2" style="background: #B8DF85;">Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style="border:1px solid;" >
         <% @categories.each do |category| %>
           <tr>
-            <td><%= category.name %></td>
-            <td><%= link_to :edit, categories_path(:id => category),class:"btn btn-outline-info" %></td>
-            <td><%= link_to "Delete", category, method: :delete, class:"btn btn-outline-danger", data: {confirm: "Are You Sure?"} %></td>
+            <td style="background: #C19314;"><%= link_to "#{category.name}", category, class:"text-decoration-none link-dark" %></td>
+            <td style="background: #C19314;"><%= link_to :edit, categories_path(:id => category),class:"btn btn-outline-info" %></td>
+            <td style="background: #C19314;"><%= link_to "Delete", category, method: :delete, class:"btn btn-outline-danger", data: {confirm: "Are You Sure?"} %></td>
           </tr>
         <% end %>
       </tbody>

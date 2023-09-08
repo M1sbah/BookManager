@@ -1,3 +1,5 @@
 <div class="container">
-	<%= render 'form', author: @author , url: book_authors_path(params[:book_id]), heading: "Create New Author" %>
+	<div class="col-lg-6">
+		<%= render 'form', author: @author , url: book_authors_path(params[:book_id]), heading: "Create New Author" %>
+	</div>
 </div>

@@ -1,0 +1,10 @@
+<a href="<%= book_path(book) %>", class="text-decoration-none">
+	<div class="card mx-2" style="height: 100%;width: 320px;background: #C19314;">
+		<div class="card-body">
+			<div class="container">
+				<%= image_tag 'cover', style: 'height:320px;width:100%;' %>
+				<h4><%= book.title %></h4>
+			</div>
+		</div>
+	</div>
+</a>
