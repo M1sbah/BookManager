@@ -19,5 +19,10 @@ class Book < ApplicationRecord
 		if self.authors.present?
 			self.authors.destroy_all
 		end
+		if self.categories.present?
+			self.categories.each do |category|
+				category.books.destroy(self)
+			end
+		end
 	end
 end
