@@ -1,6 +1,12 @@
 class CategoriesController < ApplicationController
+
+	before_action :set_category ,only: [:show, :update, :destroy] 
+
 	def index
 		@categories = Category.all
+
+		authorize @categories
+
 		# byebug
 		if params[:id].present?
 			@category = Category.find(params[:id])
@@ -27,7 +33,6 @@ class CategoriesController < ApplicationController
 	end
 
 	def update
-		@category = Category.find(params[:id])
 		if @category.update(category_params)
 			flash[:notice] = "Category Updated"
 		else
@@ -38,7 +43,8 @@ class CategoriesController < ApplicationController
 	end
 
 	def destroy
-		@category = Category.find(params[:id])
+
+		@category.delete
 		if @category.destroy
 			flash[:notice] = "Category Removed"
 		else
@@ -51,5 +57,10 @@ class CategoriesController < ApplicationController
 	private
 	def category_params
 		params.require(:category).permit(:name)
+	end
+
+	def set_category
+		@category = Category.find(params[:id])
+		authorize @category
 	end
 end
