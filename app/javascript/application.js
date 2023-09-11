@@ -11,8 +11,8 @@ import Rails from '@rails/ujs';
 Rails.start();
 
 
-$(document).on("ready turbolinks:load", () => {
- 	setTimeout(function(){
- 		$(".messages").hide(500)
- 	},2000)
-});
+// $(document).on("ready turbolinks:load", () => {
+//  	setTimeout(function(){
+//  		$(".messages").hide(500)
+//  	},2000)
+// });
