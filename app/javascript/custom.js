@@ -1,5 +1,5 @@
 $(document).on('turbo:load', function() {
   setTimeout(function(){
- 		$(".messages").hide(500)
- 	},2000)
+ 		$(".messages").hide(400)
+ 	},5000)
 });

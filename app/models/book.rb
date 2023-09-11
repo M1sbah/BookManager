@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
 	validates :title, :desc, :price, :page, presence: true
 	validates :title, uniqueness: true
+	validates :user_id, presence: true
 
 	extend FriendlyId
 	friendly_id :title, use: :slugged
@@ -10,6 +11,8 @@ class Book < ApplicationRecord
 
 	has_many :category_books
 	has_many :categories, through: :category_books
+
+	belongs_to :user
 
 	def delete
 		if self.publisher.present?
