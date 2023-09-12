@@ -16,7 +16,7 @@ class AuthorsController < ApplicationController
 			redirect_to @book
 		else
 			flash[:alert] = "Unable to create Author"
-			render :new
+			render :new, status: :unprocessable_entity
 		end
 	end
 

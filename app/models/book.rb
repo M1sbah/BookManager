@@ -3,6 +3,8 @@ class Book < ApplicationRecord
 	validates :title, uniqueness: true
 	validates :user_id, presence: true
 
+	mount_uploader :cover, CoverUploader
+
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 

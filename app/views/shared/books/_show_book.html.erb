@@ -2,7 +2,11 @@
 	<div class="card mx-2" style="height: 100%;width: 320px;background: #C19314;">
 		<div class="card-body">
 			<div class="container">
-				<%= image_tag 'cover', style: 'height:320px;width:100%;' %>
+				<% if book.cover? %>
+					<%= image_tag book.cover_url, class:"card-img-top", style: 'height:320px;width:100%;' %>
+				<% else %>
+					<%= image_tag 'cover', style: 'height:320px;width:100%;' %>
+				<% end %>
 				<h4><%= book.title %></h4>
 			</div>
 		</div>

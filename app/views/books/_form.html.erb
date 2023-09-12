@@ -1,41 +1,101 @@
+<!-- <script>
+  function readURL(input){
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function(e){
+        // alert(e.target.result)
+        $("#cover_prev").attr('src',e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#book_cover").change(function(){
+      // $('#cover_prev').removeClass("cover-upload-image-tag");
+      readURL(this);
+    });
+</script> -->
 <%= form_with(model: book) do |form| %>
-  <% if book.errors.any? %>
+  <!-- % #if book.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+      <h2><%#= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
 
       <ul>
-        <% book.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
+        <%# book.errors.each do |error| %>
+          <li><%#= error.full_message %></li>
+        <%# end %>
       </ul>
     </div>
-  <% end %>
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title, class:"form-control" %>
-  </div>
+  <%# end %> -->
+  <div class="d-flex flex-row">
+    <div class="col-6">
+      <%= image_tag book.cover? ? book.cover_url : 'cover', id: "cover_prev" , style: 'height:730px;width:100%;' %>
+      <%= form.file_field :cover, class:"form-control bg-c2" %>
+      <%= form.hidden_field :cover_cache %>
+    </div>
+    <div class="card bg-c1">
+      <div>
+        <%= form.label :title, style: "display: block" %>
+        <% if book.errors.messages[:title].present? %>
+          <%= form.text_field :title, class:"form-control err" %>
+          <% book.errors.full_messages_for(:title).each do |error|%>
+            <strong class="err"><%= error %> </strong>
+          <%end%>
+        <% else %>
+          <%= form.text_field :title, class:"form-control bg-c2" %>
+        <% end %>
+      </div>
+      <div>
+        <%= form.label :desc, style: "display: block" %>
+        <% if book.errors.messages[:desc].present? %>
+          <%= form.text_field :desc, class:"form-control err" %>
+          <% book.errors.full_messages_for(:desc).each do |error|%>
+            <strong class="err"><%= error %> </strong>
+          <%end%>
+        <% else %>
+          <%= form.text_field :desc, class:"form-control bg-c2"  %>
+        <%end%>
+      </div>
 
-  <div>
-    <%= form.label :desc, style: "display: block" %>
-    <%= form.text_field :desc, class:"form-control"  %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.number_field :price, class:"form-control num_field"  %>
-  </div>
-
-  <div>
-    <%= form.label :page, style: "display: block" %>
-    <%= form.number_field :page, class:"form-control"  %>
-  </div>
-  <div class="form-check">
-    <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b|
-      b.label(:"data-value" => b.value, class:"form-check-label mx-4 mt-3") { b.check_box(class: "form-check-input") + b.text }
-    end
-    %>
-  </div>
-  <div>
-    <%= form.submit class:"btn btn-primary mt-2" %>
+      <div>
+        <%= form.label :price, style: "display: block" %>
+        <% if book.errors.messages[:price].present? %>
+          <%= form.text_field :price, class:"form-control err" %>
+          <% book.errors.full_messages_for(:price).each do |error|%>
+            <strong class="err"><%= error %> </strong>
+          <%end%>
+        <% else %>
+          <%= form.number_field :price, class:"form-control num_field bg-c2"  %>
+        <%end%>
+      </div>
+      <div>
+        <%= form.label :page, style: "display: block" %>
+        <% if book.errors.messages[:page].present? %>
+          <%= form.text_field :page, class:"form-control err" %>
+          <% book.errors.full_messages_for(:page).each do |error|%>
+            <strong class="err"><%= error %> </strong>
+          <%end%>
+        <% else %>
+          <%= form.number_field :page, class:"form-control bg-c2"  %>
+        <%end%>
+      </div>
+      <div class="form-check">
+        <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b|
+          b.label(:"data-value" => b.value, class:"form-check-label mx-4 mt-3 ") { b.check_box(class: "form-check-input bg-c2") + b.text }
+        end%>
+      </div>
+      <div class="d-flex flex-row">
+        <div>
+          <%= form.submit class:"btn btn-primary mt-2 mx-3" %> 
+        </div>
+        <div>
+          <%= link_to :back, :back ,class:"btn btn-info mt-2 mx-4" %>
+        </div>
+        <div>
+          <% if params[:action]=='edit' %>
+            <%= link_to "Show this book", book , class:"btn btn-secondary mt-2"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
