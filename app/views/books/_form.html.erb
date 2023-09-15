@@ -26,14 +26,14 @@
       </ul>
     </div>
   <%# end %> -->
-  <div class="d-flex flex-row">
-    <div class="col-6">
-      <%= image_tag book.cover? ? book.cover_url : 'cover', id: "cover_prev" , style: 'height:730px;width:100%;' %>
+  <div class="d-flex flex-row mx-auto">
+    <div class="col-4">
+      <%= image_tag book.cover? ? book.cover_url : 'cover', id: "cover_prev" , style: 'height:600px;width:100%;' %>
       <%= form.file_field :cover, class:"form-control bg-c2" %>
       <%= form.hidden_field :cover_cache %>
     </div>
     <div class="card bg-c1">
-      <div>
+      <div class="mx-auto w-800px">
         <%= form.label :title, style: "display: block" %>
         <% if book.errors.messages[:title].present? %>
           <%= form.text_field :title, class:"form-control err" %>
@@ -44,7 +44,7 @@
           <%= form.text_field :title, class:"form-control bg-c2" %>
         <% end %>
       </div>
-      <div>
+      <div class="mx-auto w-800px">
         <%= form.label :desc, style: "display: block" %>
         <% if book.errors.messages[:desc].present? %>
           <%= form.text_field :desc, class:"form-control err" %>
@@ -56,7 +56,7 @@
         <%end%>
       </div>
 
-      <div>
+      <div class="mx-auto w-800px">
         <%= form.label :price, style: "display: block" %>
         <% if book.errors.messages[:price].present? %>
           <%= form.text_field :price, class:"form-control err" %>
@@ -67,7 +67,7 @@
           <%= form.number_field :price, class:"form-control num_field bg-c2"  %>
         <%end%>
       </div>
-      <div>
+      <div class="mx-auto w-800px">
         <%= form.label :page, style: "display: block" %>
         <% if book.errors.messages[:page].present? %>
           <%= form.text_field :page, class:"form-control err" %>
@@ -77,22 +77,26 @@
         <% else %>
           <%= form.number_field :page, class:"form-control bg-c2"  %>
         <%end%>
+      </div >
+      <div class="mx-auto w-800px mt-3">
+        <%= form.file_field :book_pdf, direct_upload: true, accept: 'application/pdf',class:"form-control" %>
       </div>
-      <div class="form-check">
+      <div class="form-check mx-2">
         <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b|
           b.label(:"data-value" => b.value, class:"form-check-label mx-4 mt-3 ") { b.check_box(class: "form-check-input bg-c2") + b.text }
         end%>
       </div>
-      <div class="d-flex flex-row">
+      <div class="d-flex flex-row mx-3">
         <div>
           <%= form.submit class:"btn btn-primary mt-2 mx-3" %> 
         </div>
         <div>
-          <%= link_to :back, :back ,class:"btn btn-info mt-2 mx-4" %>
+          <%= link_to :back, :back ,class:"btn btn-info mt-2 mx-2" %>
         </div>
         <div>
           <% if params[:action]=='edit' %>
             <%= link_to "Show this book", book , class:"btn btn-secondary mt-2"%>
+            <%= link_to "Destroy this book", book, method: :delete, data:{confirm: "Are you Sure?"},class:"btn btn-danger mt-2" %>
           <% end %>
         </div>
       </div>

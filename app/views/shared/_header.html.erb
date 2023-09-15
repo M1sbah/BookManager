@@ -34,18 +34,7 @@
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Logout", destroy_user_session_path, method: :delete ,class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Profile", edit_user_registration_path, class:"nav-link" %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class:"nav-link" %>
-          </li>
-        <% end %>
+        <%= navigation_link%>
       </ul>
       <!-- <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

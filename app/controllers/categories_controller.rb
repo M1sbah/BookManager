@@ -3,6 +3,9 @@ class CategoriesController < ApplicationController
 	before_action :set_category ,only: [:show, :update, :destroy] 
 
 	def index
+
+		setPageTitle "categories"
+
 		@categories = Category.all
 
 		authorize @categories
@@ -18,7 +21,9 @@ class CategoriesController < ApplicationController
 
 	def show
 		@category = Category.find(params[:id])
-		@books=@category.books
+
+		setPageTitle @category.name
+		@books=@category.books.page(params[:page])
 	end
 
 	def create

@@ -78,3 +78,5 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'devise'
 gem 'pundit', '~> 2.3', '>= 2.3.1'
 gem 'carrierwave', '~> 3.0', '>= 3.0.3'
+gem 'kaminari'
+gem "font-awesome-rails"

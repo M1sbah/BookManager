@@ -4,6 +4,7 @@ class Book < ApplicationRecord
 	validates :user_id, presence: true
 
 	mount_uploader :cover, CoverUploader
+	has_one_attached :book_pdf
 
 	extend FriendlyId
 	friendly_id :title, use: :slugged
@@ -15,6 +16,8 @@ class Book < ApplicationRecord
 	has_many :categories, through: :category_books
 
 	belongs_to :user
+
+	paginates_per 9
 
 	def delete
 		if self.publisher.present?

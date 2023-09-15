@@ -1,9 +1,10 @@
-<div class="card w-100 mb-3 mt-5">
+<div class="card w-100 mb-3">
   <div class="catd-title  text-center">
     <h1>Authors List</h1>
   </div>
   <div class="card-body">
     <table class="table">
+    	<p class="float-start"><%= link_to '<i class="fa fa-solid fa-plus fa-lg"></i>'.html_safe, new_book_author_path(book)%> Add Author</p>
       <thead>
         <tr>
           <th>Name</th>
@@ -16,8 +17,9 @@
           <tr>
             <td><%= author.name %></td>
             <td><%= author.email %></td>
-            <td><%= link_to "Edit Author" , edit_book_author_path(book, author), class:"btn btn-outline-info" %> | 
-              <%= link_to "Delete", book_author_path(book, author), method: :delete, data: {confirm: "Are You Sure?"}, class:"btn btn-outline-danger "  %></td>
+            <td>
+              <%= link_to "<i class='fa fa-solid fa-pencil fa-lg'></i>".html_safe , edit_book_author_path(book, author),class:"mx-3"%>
+              <%= link_to '<i class="fa fa-regular fa-trash fa-lg" style="color: #ff2424;"></i>'.html_safe, book_author_path(book, author), method: :delete, data: {confirm: "Are You Sure?"}  %></td>
           </tr>  
         <% end %>
       </tbody>

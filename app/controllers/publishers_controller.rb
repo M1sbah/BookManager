@@ -5,6 +5,7 @@ class PublishersController < ApplicationController
 
 
 	def new
+		setPageTitle "New"
 		@publisher = Publisher.new
 	end
 
@@ -25,6 +26,7 @@ class PublishersController < ApplicationController
 
 
 	def edit
+		setPageTitle @publisher.publish
 	end
 
 	def update
@@ -55,6 +57,7 @@ class PublishersController < ApplicationController
 
 	def set_publisher
 		@publisher = Publisher.find(params[:id])
+		authorize @publisher
 	end
 	def set_book
 		@book = Book.friendly.find(params[:book_id])

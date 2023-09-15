@@ -5,7 +5,9 @@ class AuthorsController < ApplicationController
 
 
 	def new
+		setPageTitle "New author"
 		@author = Author.new
+		authorize @author
 	end
 
 	def create
@@ -21,6 +23,7 @@ class AuthorsController < ApplicationController
 	end
 
 	def edit
+		setPageTitle @author.name
 	end
 
 	def update
@@ -55,5 +58,6 @@ class AuthorsController < ApplicationController
 
 	def set_author
 		@author = Author.find(params[:id])
+		authorize @author
 	end
 end

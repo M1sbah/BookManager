@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
 	before_action :authenticate_user!
 
+	include SeoHelper
+
 	include Pundit::Authorization
 
 	protect_from_forgery with: :exception
